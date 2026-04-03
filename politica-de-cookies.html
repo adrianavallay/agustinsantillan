@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Cookies — Santillán Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #7a9e7e;
+      --bg: #f7f4ef;
+      --bg-alt: #eeeae3;
+      --text: #2c2924;
+      --text-muted: #7a7267;
+      --border: rgba(122, 158, 126, 0.2);
+      --nav-bg: rgba(247, 244, 239, 0.95);
+    }
+    [data-theme="dark"] {
+      --bg: #141a14;
+      --bg-alt: #1c241c;
+      --text: #e8e2d8;
+      --text-muted: #9a9485;
+      --border: rgba(122, 158, 126, 0.15);
+      --nav-bg: rgba(20, 26, 20, 0.95);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.4s, color 0.4s;
+    }
+    a { color: var(--accent); text-decoration: underline; }
+    a:hover { opacity: 0.8; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 26px; }
+    [data-theme="dark"] .nav-logo img { filter: brightness(0) invert(1); opacity: 0.8; }
+    .nav-back {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .theme-toggle {
+      display: flex; align-items: center;
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 100px; padding: 3px; gap: 2px;
+    }
+    .theme-btn {
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      padding: 4px 10px; border-radius: 100px; border: none; cursor: pointer;
+      background: transparent; color: var(--text-muted);
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.08em; transition: background 0.25s, color 0.25s;
+    }
+    .theme-btn svg { width: 11px; height: 11px; }
+    .theme-btn.active { background: var(--accent); color: #fff; }
+
+    .page-hero {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2.5rem; text-align: center;
+    }
+    .page-hero .label {
+      display: block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text);
+    }
+
+    .content-wrap {
+      max-width: 820px; margin: 0 auto; padding: 4rem 2.5rem 6rem;
+    }
+    .content-wrap p {
+      font-size: 0.93rem; font-weight: 300; color: var(--text-muted);
+      margin-bottom: 1.2rem; line-height: 1.85;
+    }
+    .content-wrap h2 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400;
+      color: var(--text); margin: 2.5rem 0 0.75rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .content-wrap h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+      font-weight: 400; font-style: italic; color: var(--text); margin: 1.75rem 0 0.6rem;
+    }
+    .content-wrap ul {
+      padding-left: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .content-wrap ul li {
+      font-size: 0.93rem; font-weight: 300; color: var(--text-muted);
+      margin-bottom: 0.5rem; line-height: 1.75;
+    }
+    .content-wrap strong { font-weight: 600; color: var(--text); }
+
+    .highlight-box {
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+    }
+    .highlight-box p { margin-bottom: 0.4rem; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    .no-cookies {
+      background: rgba(122,158,126,0.08);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .no-cookies p { margin-bottom: 0; font-style: italic; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th {
+      background: var(--accent); color: #fff;
+      font-family: 'Raleway', sans-serif; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.75rem 1rem; text-align: left;
+    }
+    td {
+      padding: 0.65rem 1rem; border-bottom: 1px solid var(--border);
+      color: var(--text-muted); font-weight: 300; line-height: 1.6; vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg-alt); }
+
+    footer {
+      background: #0e140e; padding: 2rem 2.5rem; text-align: center;
+    }
+    footer p { font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.35); }
+    footer a { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .content-wrap { padding: 3rem 1.25rem 5rem; }
+      .page-hero { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back
+    </a>
+    <div class="nav-logo">
+      <img src="https://agustinsantillan.com/wp-content/uploads/2021/10/IMG_0426-1024x172.png" alt="Santillán Design" />
+    </div>
+    <div class="theme-toggle">
+      <button class="theme-btn active" data-theme-btn="light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        </svg>
+        Day
+      </button>
+      <button class="theme-btn" data-theme-btn="dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        Night
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="label">Legal</span>
+    <h1>Política de Cookies</h1>
+  </div>
+
+  <div class="content-wrap">
+
+    <p>Tras una auditoría realizada para la información sobre las Cookies que se usan en esta web, te informamos:</p>
+
+    <h2>Nuestra Política de Cookies</h2>
+    <p>La LSSI-CE obliga a todos los que tenemos un blog o una web a advertir al usuario de la existencia de cookies, informar sobre ellas y requerirle permiso para descargarlas.</p>
+    <p>Tal y como dispone el artículo 22.2 de la Ley 34/2002: <em>"Los prestadores de servicios podrán utilizar dispositivos de almacenamiento y recuperación de datos en equipos terminales de los destinatarios, a condición de que los mismos hayan dado su consentimiento después de que se les haya facilitado información clara y completa sobre su utilización."</em></p>
+    <p>Como responsable de esta web, no siempre es posible contar con información actualizada de las cookies que terceras partes puedan utilizar a través de este sitio web. Esto se aplica especialmente a casos en los que esta página web contiene elementos integrados: textos, documentos, imágenes o breves películas que se almacenan en otra parte, pero se muestran en nuestro sitio web.</p>
+    <p>En caso de que se encuentre con cookies en este sitio web no enumeradas en la lista siguiente, le rogamos que nos lo comunique. También puede ponerse en contacto directamente con el tercero para pedirle información sobre las cookies que coloca, la finalidad y la duración de la cookie.</p>
+
+    <h3>Previo — ¿Qué son las Cookies?</h3>
+    <p>Las cookies constituyen una herramienta empleada por los servidores Web para almacenar y recuperar información acerca de sus visitantes. No es más que un fichero de texto que algunos servidores piden a nuestro navegador que escriba en nuestro disco duro, con información acerca de lo que hemos estado haciendo por sus páginas. Poseen una fecha de caducidad, que puede oscilar desde el tiempo que dure la sesión hasta una fecha futura especificada.</p>
+
+    <h2>1. Las cookies que utiliza esta web</h2>
+    <p>En esta web se utilizan cookies propias y de terceros para conseguir que tengas una mejor experiencia de navegación, puedas compartir contenido en redes sociales, para mostrarte anuncios en función a tus intereses y para obtener estadísticas de usuarios.</p>
+    <p>Las cookies empleadas en este sitio se asocian únicamente con un Usuario anónimo y su ordenador, no proporcionan referencias que permitan deducir el nombre y apellidos del Usuario y no pueden leer datos de su disco duro ni incluir virus en sus textos.</p>
+    <p>Podrá libremente decidir acerca de la implantación o no en su disco duro de las cookies empleadas. El usuario puede configurar su navegador para aceptar o rechazar por defecto todas las cookies o para recibir un aviso en pantalla de la recepción de cada cookie.</p>
+
+    <div class="highlight-box">
+      <p><strong>Las cookies de esta web ayudan a:</strong></p>
+      <ul style="margin:0.5rem 0 0; padding-left:1.25rem;">
+        <li>Hacer que esta web funcione correctamente</li>
+        <li>Ahorrarte el tener que iniciar sesión cada vez que visita este sitio</li>
+        <li>Recordarle tus ajustes durante y entre las visitas</li>
+        <li>Permitirle visualizar videos</li>
+        <li>Mejorar la velocidad / seguridad del sitio</li>
+        <li>Que pueda compartir páginas con redes sociales</li>
+        <li>Mejorar continuamente este sitio web</li>
+        <li>Mostrarle anuncios en función de tus hábitos de navegación</li>
+      </ul>
+    </div>
+
+    <div class="no-cookies">
+      <p><strong>No utilizaré jamás cookies para:</strong> recoger información de identificación personal (sin su permiso expreso), recoger información sensible (sin su permiso expreso), ni compartir datos de identificación personal a terceros.</p>
+    </div>
+
+    <h2>2. Cookies de terceros que utilizamos</h2>
+    <p>Esta web, como la mayoría de sitios web, incluye funcionalidades proporcionadas por terceros. También se ponen a prueba regularmente nuevos diseños o servicios de terceros. Esto puede modificar ocasionalmente la configuración de cookies. En ningún caso se van a utilizar cookies que comprometan tu privacidad.</p>
+
+    <p><strong>Entre las cookies de terceros más estables están:</strong></p>
+    <ul>
+      <li><strong>Google Analytics:</strong> para ayudar al website a analizar el uso que hacen los Usuarios del sitio web y mejorar la usabilidad del mismo, pero en ningún caso se asocian a datos que pudieran llegar a identificar al usuario. Google Analytics es un servicio prestado por Google, Inc., cuya oficina principal está en 1600 Amphitheatre Parkway, Mountain View (California), CA 94043, Estados Unidos.</li>
+      <li><strong>WordPress:</strong> Este sitio utiliza la plataforma WordPress, propiedad de Automattic, Inc. El uso de tales cookies por los sistemas no está bajo control o gestión del responsable de la web, pueden cambiar su función en cualquier momento. Automattic, Inc., utiliza cookies con la finalidad de ayudar a identificar y rastrear a los visitantes de los sitios de WordPress.</li>
+      <li><strong>Redes sociales:</strong> Las Cookies de redes sociales pueden almacenarse en su navegador mientras navega por este sitio, por ejemplo, cuando utiliza el botón de compartir contenidos en alguna red social.</li>
+    </ul>
+
+    <p>Las empresas que generan estas cookies tienen sus propias políticas:</p>
+    <ul>
+      <li><a href="https://www.facebook.com/help/323540651073243/" target="_blank">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/legal/privacy-policy?_l=es_ES" target="_blank">LinkedIn</a></li>
+      <li><a href="https://help.instagram.com/155833707900388" target="_blank">Instagram</a></li>
+      <li><a href="https://policies.google.com/privacy?hl=es&gl=es" target="_blank">Google</a></li>
+    </ul>
+
+    <p><strong>Cookies publicitarias y de remarketing:</strong> En la web usamos píxeles y cookies para realizar publicidad y remarketing:</p>
+    <ul>
+      <li><strong>Píxel de Facebook:</strong> permite mostrar anuncios dentro de la plataforma de Facebook. Más información en <a href="https://www.facebook.com/policies/cookies/" target="_blank">facebook.com/policies/cookies</a>.</li>
+      <li><strong>Píxel de Google:</strong> permite la colocación de campañas publicitarias en la Red de Display de Google. Más información en <a href="https://www.google.com/settings/ads/plugin" target="_blank">google.com/settings/ads/plugin</a>.</li>
+      <li><strong>Píxel de Active Campaign:</strong> permite a la web promocionar artículos nuevos o más vendidos para sus suscriptores a través de cookies de seguimiento.</li>
+    </ul>
+
+    <p>A continuación se detallan las cookies que pueden instalarse habitualmente durante la navegación:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Duración</th>
+            <th>Finalidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>tve_leads_unique (Propia)</td>
+            <td>Caduca al finalizar sesión</td>
+            <td>Almacenan información del usuario y sus sesiones para mejorar la experiencia de usuario</td>
+          </tr>
+          <tr>
+            <td>_ga (Terceros)</td>
+            <td>2 años</td>
+            <td>Se usa para distinguir a los usuarios. Cookie de Google Analytics.</td>
+          </tr>
+          <tr>
+            <td>_gid (Terceros)</td>
+            <td>2 años</td>
+            <td>Se usa para distinguir a los usuarios. Cookie de Google Analytics.</td>
+          </tr>
+          <tr>
+            <td>_gat (Terceros)</td>
+            <td>10 minutos</td>
+            <td>Se usa para saber el ratio de recarga. Cookie de Google Analytics.</td>
+          </tr>
+          <tr>
+            <td>APISID, HSID, NID, SAPISID, SID, SSID (Terceros)</td>
+            <td>2 años</td>
+            <td>Guarda preferencias de usuario y otra información de los servicios de Google.</td>
+          </tr>
+          <tr>
+            <td>__cfduid (Propia)</td>
+            <td>5 años</td>
+            <td>Se utiliza para anular las restricciones de seguridad basadas en la dirección IP del visitante.</td>
+          </tr>
+          <tr>
+            <td>__smVID (Propia)</td>
+            <td>Caduca al finalizar la sesión</td>
+            <td>Almacena información del usuario y sus sesiones para mejorar la experiencia de usuario.</td>
+          </tr>
+          <tr>
+            <td>_remember_checked_on</td>
+            <td>Caduca al finalizar la sesión</td>
+            <td>Cookies con funcionalidades de Twitter.</td>
+          </tr>
+          <tr>
+            <td>__stripe_mid (Terceros)</td>
+            <td>Caduca al finalizar la sesión</td>
+            <td>Cookie de Stripe.</td>
+          </tr>
+          <tr>
+            <td>Pl, presence (Terceros)</td>
+            <td>90 días</td>
+            <td>Se utiliza para registrar que un dispositivo o un navegador iniciaron sesión a través de la plataforma de Facebook.</td>
+          </tr>
+          <tr>
+            <td>fr (Terceros)</td>
+            <td>90 días</td>
+            <td>Cookie de publicidad principal de Facebook. Se utiliza para ofrecer, analizar y mejorar la relevancia de los anuncios.</td>
+          </tr>
+          <tr>
+            <td>sb (Terceros)</td>
+            <td>2 años</td>
+            <td>Cookie de Facebook que identifica al navegador con fines de autenticación del inicio de sesión.</td>
+          </tr>
+          <tr>
+            <td>c_user (Terceros)</td>
+            <td>20 días</td>
+            <td>Se utiliza junto con la cookie xs para autenticar tu identidad en Facebook.</td>
+          </tr>
+          <tr>
+            <td>xs (Terceros)</td>
+            <td>90 días</td>
+            <td>Se utiliza junto con la cookie c_user para autenticar tu identidad en Facebook.</td>
+          </tr>
+          <tr>
+            <td>datr (Terceros)</td>
+            <td>2 años</td>
+            <td>Cookie de Facebook que identifica a los navegadores con fines de seguridad e integridad del sitio.</td>
+          </tr>
+          <tr>
+            <td>bcookie (Terceros)</td>
+            <td>2 años</td>
+            <td>Cookie de publicidad creada por la red social LinkedIn.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>3. ¿Cómo puedo gestionar y desactivar estas cookies?</h2>
+    <p>En el caso de no desear que el sitio web instale ninguna cookie en tu equipo, cabe la posibilidad de adaptar tu navegador de modo que se te notifique antes de que se descargue ninguna cookie. Se puede igualmente modificar la configuración del navegador de forma que rechace todas las cookies o únicamente las cookies de terceros. También puedes eliminar cualquiera de las cookies que ya se encuentren en tu equipo.</p>
+    <p>Ten en cuenta que tendrás que adaptar por separado la configuración de cada navegador y equipo que utilices. A continuación te facilitamos los enlaces de ayuda de los navegadores más utilizados:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank">Google Chrome</a></li>
+      <li><a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank">Internet Explorer</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank">Apple Safari</a></li>
+    </ul>
+    <p><em>Política revisada en julio de 2020.</em></p>
+
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Agustín Santillán &mdash; <a href="politica-de-privacidad.html">Política de Privacidad</a> · <a href="politica-de-cookies.html">Política de Cookies</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    function applyTheme(t) {
+      html.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('active', b.getAttribute('data-theme-btn') === t));
+    }
+    applyTheme(savedTheme);
+    document.querySelectorAll('[data-theme-btn]').forEach(b => b.addEventListener('click', () => applyTheme(b.getAttribute('data-theme-btn'))));
+  </script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — Santillán Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #7a9e7e;
+      --bg: #f7f4ef;
+      --bg-alt: #eeeae3;
+      --text: #2c2924;
+      --text-muted: #7a7267;
+      --border: rgba(122, 158, 126, 0.2);
+      --nav-bg: rgba(247, 244, 239, 0.95);
+    }
+    [data-theme="dark"] {
+      --bg: #141a14;
+      --bg-alt: #1c241c;
+      --text: #e8e2d8;
+      --text-muted: #9a9485;
+      --border: rgba(122, 158, 126, 0.15);
+      --nav-bg: rgba(20, 26, 20, 0.95);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.4s, color 0.4s;
+    }
+    a { color: var(--accent); text-decoration: underline; }
+    a:hover { opacity: 0.8; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 26px; }
+    [data-theme="dark"] .nav-logo img { filter: brightness(0) invert(1); opacity: 0.8; }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .theme-btn {
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      padding: 4px 10px; border-radius: 100px; border: none; cursor: pointer;
+      background: transparent; color: var(--text-muted);
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.08em; transition: background 0.25s, color 0.25s;
+    }
+    .theme-btn svg { width: 11px; height: 11px; }
+    .theme-btn.active { background: var(--accent); color: #fff; }
+
+    /* CONTENT */
+    .page-hero {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2.5rem;
+      text-align: center;
+    }
+    .page-hero .label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+    }
+
+    .content-wrap p {
+      font-size: 0.93rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+
+    .content-wrap h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text);
+      margin: 2.5rem 0 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .content-wrap h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    .content-wrap h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .content-wrap ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .content-wrap ul li {
+      font-size: 0.93rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      line-height: 1.75;
+    }
+
+    .content-wrap strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .intro-box {
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .intro-box p { margin-bottom: 0.5rem; }
+    .intro-box p:last-child { margin-bottom: 0; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th {
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg-alt); }
+
+    /* FOOTER */
+    footer {
+      background: #0e140e;
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+    }
+    footer a { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .content-wrap { padding: 3rem 1.25rem 5rem; }
+      .page-hero { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back
+    </a>
+    <div class="nav-logo">
+      <img src="https://agustinsantillan.com/wp-content/uploads/2021/10/IMG_0426-1024x172.png" alt="Santillán Design" />
+    </div>
+    <div class="theme-toggle">
+      <button class="theme-btn active" data-theme-btn="light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        </svg>
+        Day
+      </button>
+      <button class="theme-btn" data-theme-btn="dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        Night
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="label">Legal</span>
+    <h1>Política de Privacidad</h1>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="intro-box">
+      <p>De conformidad con lo dispuesto en el Reglamento General (UE) Sobre Protección de Datos y la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales actual, mediante la aceptación de la presente Política de Privacidad, se le informa que:</p>
+      <ul>
+        <li>El responsable de tratamiento es Walid Esteban Jalil con CIF Y6538419Q y domicilio social en Carrer Nicolau de Pacs 16 – 5 – 1 – 07006 Palma de Mallorca.</li>
+        <li>Email: <a href="mailto:hola@walojalil.com">hola@walojalil.com</a></li>
+        <li>La actividad social es: Negocios online.</li>
+      </ul>
+    </div>
+
+    <p>La presente Política de Privacidad será válida únicamente para los datos de carácter personal obtenidos en el Sitio Web, no siendo aplicable para aquella información recabada por terceros en otras páginas web, incluso si éstas se encuentran enlazadas por el Sitio Web.</p>
+    <p>Con ello, se manifiesta por parte del responsable el compromiso por mantener y garantizar las relaciones comerciales de forma segura mediante la protección de los datos personales y velando por el cumplimiento del derecho a la privacidad de cada uno de los usuarios del sitio web, reflejando que no es necesario evaluación de impacto ni delegado de protección de datos.</p>
+    <p>Las presentes políticas son revisadas con cada cambio significativo y como mínimo una vez al año.</p>
+
+    <h2>1. ¿Qué son los Datos Personales?</h2>
+    <p>Una pequeña aproximación es importante, por ello, el USUARIO debe saber que un dato de carácter personal sería cualquier información relativa a una persona que nos facilita cuando visita nuestro sitio web, en nuestro caso nombre e email, y si compra algún producto necesitando factura, solicitaremos domicilio completo, nombre, apellidos y DNI o CIF.</p>
+    <p>Adicionalmente, con la visita del sitio web, determinada información se almacena automáticamente por motivos técnicos como la dirección IP asignada por su proveedor de acceso a Internet.</p>
+
+    <h3>Principios para el tratamiento de datos</h3>
+    <p>Para tratar sus datos personales, se aplicará según el Reglamento General sobre Protección de Datos y la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales los siguientes principios:</p>
+    <ul>
+      <li><strong>Principio de licitud, lealtad y transparencia:</strong> requeriremos su consentimiento para el tratamiento de sus datos personales para uno o varios fines específicos que le informaremos previamente de forma clara y comprensible.</li>
+      <li><strong>Principio de minimización de datos:</strong> Solo solicitaremos datos estrictamente necesarios en relación con los fines para los que ya se te ha informado previamente al USUARIO.</li>
+      <li><strong>Principio de limitación del plazo de conservación:</strong> los datos serán mantenidos durante no más tiempo del necesario para los fines del tratamiento, en función a la finalidad, se informará del plazo de conservación correspondiente, en el caso de suscripciones, periódicamente revisaremos las listas y eliminaremos aquellos registros inactivos durante un tiempo considerable.</li>
+      <li><strong>Principio de integridad y confidencialidad:</strong> Sus datos serán tratados de tal manera que se garantice una seguridad adecuada de los datos personales y se garantice confidencialidad. Debe saber que tomo todas las medidas encaminadas a evitar el acceso no autorizado o uso indebido de los datos de los usuarios por parte de terceros.</li>
+    </ul>
+
+    <h2>2. Finalidad, Legitimación, Categoría de los Datos</h2>
+
+    <h3>2.1 Finalidad</h3>
+    <p>La finalidad para la que se recabarán los datos serán las siguientes:</p>
+    <ul>
+      <li>La venta de formación sobre marketing online.</li>
+      <li>La venta de Ebooks.</li>
+      <li>Gestionar la lista de suscriptores y usuarios adscritos a la web.</li>
+      <li>Suministro de contenidos en el blog.</li>
+      <li>Dirigir su red de afiliados y comerciantes así como la gestión de pagos de los mismos.</li>
+      <li>El envío de información y prospección comercial.</li>
+      <li>El cumplimiento de las correspondientes obligaciones de índole contable, legal, fiscal y administrativa.</li>
+    </ul>
+    <p>Únicamente el titular tendrá acceso a sus datos, y bajo ningún concepto, estos datos serán cedidos, compartidos, transferidos, ni vendidos a ningún tercero.</p>
+
+    <h3>2.2 Menores de edad</h3>
+    <p>En el supuesto de ser mayor de catorce años, podrá registrarse sin necesidad del consentimiento previo de sus padres o tutores.</p>
+    <p>En el caso de ser menor de 14 años, será condición obligatoria el consentimiento de sus padres o tutores para que podamos tratar sus datos personales.</p>
+    <p><strong>Advertencia:</strong> Si tiene menos de catorce años y no ha obtenido el consentimiento de sus padres, no puede registrarte en la web por lo que procederemos a denegar su solicitud en caso de tener constancia de ello.</p>
+
+    <h3>2.3 Legitimación</h3>
+    <p>Gracias al <strong>consentimiento</strong>, podemos tratar sus datos siendo requisito obligatorio para poder suscribirse a la página web. Puede retirar su consentimiento en el momento que lo desee.</p>
+    <p>Estaremos legitimados para tratar sus datos para el cumplimiento de obligaciones legales en materia fiscal, mercantil y contable, para la facturación y llevanza de la contabilidad.</p>
+
+    <h3>2.4 Categoría de los datos y finalidades</h3>
+    <p>Los datos recabados en ningún momento son especialmente protegidos, sino que se encuentran categorizados como <strong>datos identificativos</strong>.</p>
+
+    <h4>Datos relativos a Clientes</h4>
+    <p>Los datos de identificación que se deriven del medio de contacto empleado por el cliente, a consecuencia de la venta de un bien o servicio: Nombre y apellidos, NIF, dirección postal, correo electrónico, teléfono, firma, datos bancarios. La finalidad es cumplir con las obligaciones y derechos derivados de la relación contractual existente.</p>
+
+    <h4>Datos relativos a Usuarios web</h4>
+    <p>Los datos de identificación que podemos requerir en el formulario de contacto (nombre, apellidos, e-mail) y los que nos facilite voluntariamente. Además, al navegar nos facilita su IP, dirección MAC, sistema operativo o navegador, e incluso la duración de su visita.</p>
+
+    <h4>Proveedores</h4>
+    <p>Los datos de identificación que se deriven del medio de contacto empleado por el proveedor y los que constan en los contratos acordados. Normalmente: nombre y apellidos, NIF, dirección postal, correo electrónico, teléfono, firma.</p>
+
+    <h4>Redes Sociales</h4>
+    <p>Los datos identificativos que suministre usted mismo como usuario de la red social y los que voluntariamente nos proporcione al ponerse en contacto con nosotros mediante comentarios o mensajería instantánea de la red.</p>
+
+    <h4>Suscripción a newsletter y/o contenidos</h4>
+    <p>Los datos de identificación que requerimos en el formulario de contacto para dicha suscripción son nombre, apellidos y e-mail. La finalidad es ofrecer novedades, descuentos y promociones sobre la base jurídica del consentimiento libre, informado, específico e inequívoco prestado.</p>
+
+    <h4>Formulario de comentarios</h4>
+    <p>La web incluye un formulario cuya finalidad es comentar los artículos y dar su opinión. Los datos personales introducidos serán utilizados exclusivamente para moderarlos y publicarlos, almacenándose en los servidores de WordPress.</p>
+
+    <h4>Segmentación con fines comerciales</h4>
+    <p>La segmentación consiste en establecer perfiles de usuarios con el objetivo de remitir información de forma más personalizada. En ningún caso la elaboración de perfiles supondrá la adopción de decisiones individuales automatizadas que produzcan efectos jurídicos sobre el interesado.</p>
+
+    <h4>Sistemas de rastreo</h4>
+    <p>En la página se utilizan sistemas de rastreo como Google Analytics, con los que se estudian las preferencias de los usuarios, sus características demográficas, sus patrones de tráfico, y otra información en conjunto para comprender mejor quiénes constituyen la audiencia.</p>
+
+    <h3>2.5 Tiempo de conservación de los datos</h3>
+    <p>Conservaremos sus datos durante el tiempo legalmente establecido o hasta que solicite eliminarlos.</p>
+
+    <h3>2.6 Exactitud y veracidad de los datos</h3>
+    <p>El Usuario es el único responsable de la veracidad y exactitud de los datos que remita. Como usuario, debe garantizar la exactitud y autenticidad de los datos personales facilitados debiendo aportar la información completa y correcta en los distintos formularios de captación de datos.</p>
+
+    <h2>3. Cumplimiento de la normativa de aplicación</h2>
+    <p>Actualmente nos regimos por el Reglamento Europeo Sobre Protección de Datos así como la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales.</p>
+    <p>Asimismo, el responsable de tratamiento informa que da cumplimiento a la Ley 34/2002 de 11 de julio, de Servicios de la Sociedad de la Información y el Comercio Electrónico y le solicitará su consentimiento al USUARIO para el tratamiento de su correo electrónico con fines comerciales en cada momento.</p>
+
+    <h2>4. Medidas de Seguridad</h2>
+    <p>El responsable de tratamiento le informa que se tienen implantadas las medidas de seguridad de índole técnica y organizativas necesarias para garantizar la seguridad de sus datos de carácter personal y evitar su alteración, pérdida y tratamiento y/o acceso no autorizado, habida cuenta del estado de la tecnología, la naturaleza de los datos almacenados y los riesgos a que están expuestos.</p>
+    <p>Asimismo, se han establecido medidas adicionales en orden a reforzar la confidencialidad e integridad de la información en su organización. La web dispone de certificado SSL, garantizando de esta forma la seguridad de sus datos.</p>
+
+    <h2>5. Ejercicio de Derechos</h2>
+    <p>Aquellas personas físicas que hayan facilitado sus datos a través del Sitio Web, podrán dirigirse al titular con el fin de ejercitar gratuitamente sus derechos de acceso a sus datos, rectificación o supresión, limitación y oposición respecto de los datos incorporados en sus ficheros. Asimismo, podrá presentar una reclamación ante la Agencia Española de Protección de Datos sita en Calle Jorge Juan, 6, 28001, Madrid, <a href="https://www.aepd.es/es" target="_blank">https://www.aepd.es/es</a>.</p>
+    <p>El interesado podrá ejercitar sus derechos mediante comunicación por escrito dirigida a:</p>
+    <p><strong>Walid Esteban Jalil</strong><br>Carrer Nicolau de Pacs 16 – 5 – 1 – 07006 Palma de Mallorca<br>Email: <a href="mailto:hola@walojalil.com">hola@walojalil.com</a></p>
+
+    <h2>6. Destinatarios y Encargados del Tratamiento</h2>
+    <p>Los datos no serán comunicados a ningún tercero, salvo obligación legal o consentimiento informado. Como encargados de tratamiento, debe saber que:</p>
+    <ul>
+      <li>Los servicios de suscripción y envío de newsletters son prestados por Active Campaign LLC. Puede consultar su política en <a href="http://www.activecampaign.com/privacy-policy/" target="_blank">activecampaign.com/privacy-policy</a>.</li>
+      <li>Como plataforma de alojamiento de infoproducto, tenemos contratado los servicios de Hotmart B.V., empresa holandesa con sede en Brouwer 1, 5521 DK, Eersel, Holanda.</li>
+      <li>Usamos servicios de almacenamiento en la nube con Google Inc. Puede consultar su política en <a href="https://policies.google.com/privacy?hl=es" target="_blank">policies.google.com/privacy</a>.</li>
+      <li>Servicios de gestión de pagos prestados por Holded Technologies, S.L., calle Provenza 275, 4, 08037 Barcelona.</li>
+      <li>Plataforma web a través de Automattic Inc (WordPress). Política disponible en <a href="https://automattic.com/privacy/" target="_blank">automattic.com/privacy</a>.</li>
+      <li>Gestión de pagos con Stripe Inc., 510 Townsend Street, San Francisco, CA 94103. Política en <a href="https://stripe.com/es/privacy" target="_blank">stripe.com/es/privacy</a>.</li>
+    </ul>
+
+    <h2>7. ¿No desea recibir información o desea revocar su consentimiento?</h2>
+    <p>De conformidad con lo dispuesto en la Ley 34/2002 puede oponerse al uso de su información para fines publicitarios en cualquier momento, así como revocar su consentimiento en cualquier momento (sin efecto retroactivo).</p>
+    <p>Para ello, deberá enviar un correo electrónico a la dirección <a href="mailto:hola@walojalil.com">hola@walojalil.com</a>. Nuestros sistemas pueden requerir un lapso de tiempo que en ningún caso superará 48 horas para que su oposición o revocación se hagan efectivas.</p>
+
+    <h2>8. Plugins Sociales</h2>
+    <p>En nuestra página web ofrecemos enlaces y servicios relacionados con las diferentes redes sociales. Si eres miembro de una red social y haces clic sobre el correspondiente enlace, el proveedor de la red social podrá enlazar sus datos de perfil con la información de su visita.</p>
+    <p>Puede acceder en todo momento a las políticas de privacidad de las diferentes redes sociales:</p>
+    <ul>
+      <li><a href="https://www.facebook.com/help/323540651073243/" target="_blank">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/legal/privacy-policy?_l=es_ES" target="_blank">LinkedIn</a></li>
+      <li><a href="https://policies.google.com/privacy?hl=es&gl=es" target="_blank">Google</a></li>
+      <li><a href="https://help.instagram.com/155833707900388" target="_blank">Instagram</a></li>
+    </ul>
+
+    <h2>9. Aceptación, Consentimiento y Revocabilidad</h2>
+    <p>El Usuario declara haber sido informado de las condiciones sobre protección de datos de carácter personal, aceptando y consintiendo el tratamiento de los mismos por parte de Walid Esteban Jalil en la forma y para las finalidades indicadas en el aviso legal.</p>
+    <p>En cualquier momento podrá revocar sus datos, pero siempre sin carácter retroactivo.</p>
+
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Agustín Santillán &mdash; <a href="politica-de-privacidad.html">Política de Privacidad</a> · <a href="politica-de-cookies.html">Política de Cookies</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    function applyTheme(t) {
+      html.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('active', b.getAttribute('data-theme-btn') === t));
+    }
+    applyTheme(savedTheme);
+    document.querySelectorAll('[data-theme-btn]').forEach(b => b.addEventListener('click', () => applyTheme(b.getAttribute('data-theme-btn'))));
+  </script>
+</body>
+</html>
