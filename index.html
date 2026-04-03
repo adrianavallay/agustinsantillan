@@ -2280,17 +2280,44 @@
     // ── Contact form ──────────────────────────────────
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('[type="submit"]');
+      const form = e.target;
+      const btn  = form.querySelector('[type="submit"]');
       const original = btn.innerHTML;
-      btn.innerHTML = currentLang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
-      btn.style.background = '#5a7d5e';
+
+      btn.innerHTML = currentLang === 'es' ? 'Enviando...' : 'Sending...';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 3000);
+
+      fetch('send.php', { method: 'POST', body: new FormData(form) })
+        .then(r => r.json())
+        .then(res => {
+          if (res.ok) {
+            btn.innerHTML = currentLang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+            btn.style.background = '#5a7d5e';
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.style.background = '';
+              btn.disabled = false;
+              form.reset();
+            }, 3000);
+          } else {
+            btn.innerHTML = currentLang === 'es' ? 'Error. Intentá de nuevo.' : 'Error. Please try again.';
+            btn.style.background = '#b94040';
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.style.background = '';
+              btn.disabled = false;
+            }, 3000);
+          }
+        })
+        .catch(() => {
+          btn.innerHTML = currentLang === 'es' ? 'Error. Intentá de nuevo.' : 'Error. Please try again.';
+          btn.style.background = '#b94040';
+          setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        });
     }
 
     // ── Image error fallback ──────────────────────────
