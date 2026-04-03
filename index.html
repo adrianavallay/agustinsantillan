@@ -372,12 +372,9 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(10, 15, 10, 0.75) 0%,
-        rgba(10, 15, 10, 0.3) 50%,
-        rgba(10, 15, 10, 0.15) 100%
-      );
+      background:
+        linear-gradient(to right, rgba(8, 12, 8, 0.72) 0%, rgba(8, 12, 8, 0.3) 55%, transparent 100%),
+        linear-gradient(to top, rgba(8, 12, 8, 0.65) 0%, rgba(8, 12, 8, 0.1) 45%, transparent 100%);
     }
 
     .hero-content {
@@ -422,6 +419,7 @@
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 0.9s ease 0.5s forwards;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
     }
 
     .hero-title em {
@@ -438,6 +436,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s ease 0.7s forwards;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
     .hero-ctas {
