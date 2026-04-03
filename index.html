@@ -843,28 +843,40 @@
        HOW CAN I HELP YOU
        ============================================= */
     #help {
-      background: #2c3e50;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding: 6rem 2.5rem;
       text-align: center;
+      position: relative;
+    }
+
+    #help::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(122,158,126,0.06) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .help-inner {
       max-width: 780px;
       margin: 0 auto;
+      position: relative;
     }
 
     #help h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 1.5rem;
     }
 
     #help p {
       font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.8);
+      color: var(--text-muted);
       line-height: 1.85;
       margin-bottom: 1rem;
     }
