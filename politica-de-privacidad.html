@@ -93,10 +93,6 @@
 <body>
 
   <nav>
-    <a href="index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-      <span id="back-label">Back</span>
-    </a>
     <div class="nav-logo">
       <img src="https://agustinsantillan.com/wp-content/uploads/2021/10/IMG_0426-1024x172.png" alt="Santillán Design" />
     </div>
@@ -358,7 +354,6 @@
       document.getElementById('content-en').classList.toggle('active', lang === 'en');
       document.getElementById('content-es').classList.toggle('active', lang === 'es');
       document.getElementById('page-title').textContent = lang === 'en' ? 'Privacy Policy' : 'Política de Privacidad';
-      document.getElementById('back-label').textContent = lang === 'en' ? 'Back' : 'Volver';
       document.title = lang === 'en' ? 'Privacy Policy — Santillán Design' : 'Política de Privacidad — Santillán Design';
     }
     applyLang(savedLang);
