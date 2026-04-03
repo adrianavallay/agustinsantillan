@@ -492,7 +492,8 @@
     .scroll-indicator {
       position: absolute;
       bottom: 2rem;
-      right: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -502,20 +503,28 @@
       animation: fadeUp 0.8s ease 1.2s forwards;
     }
 
-    .scroll-indicator span {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      writing-mode: vertical-rl;
+    .mouse-scroll {
+      width: 22px;
+      height: 36px;
+      border: 1.5px solid rgba(255,255,255,0.55);
+      border-radius: 11px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
     }
 
-    .scroll-indicator .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-      animation: scrollLine 1.8s ease infinite;
+    .mouse-wheel {
+      width: 2px;
+      height: 7px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 2px;
+      animation: mouseScroll 1.8s ease infinite;
+    }
+
+    @keyframes mouseScroll {
+      0%   { transform: translateY(0);    opacity: 1; }
+      70%  { transform: translateY(10px); opacity: 0; }
+      100% { transform: translateY(0);    opacity: 0; }
     }
 
     /* =============================================
@@ -1728,8 +1737,9 @@
     </div>
 
     <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      <span data-en="SCROLL" data-es="SCROLL">SCROLL</span>
+      <div class="mouse-scroll">
+        <div class="mouse-wheel"></div>
+      </div>
     </div>
   </section>
 
