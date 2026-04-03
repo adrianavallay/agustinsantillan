@@ -943,18 +943,45 @@
       cursor: pointer;
     }
 
-    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 3; }
-    .gallery-item:nth-child(2) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 3; }
-    .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(8) { grid-column: span 5; grid-row: span 2; }
-    .gallery-item:nth-child(9) { grid-column: span 4; grid-row: span 2; }
-    .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
-    .gallery-item:nth-child(11) { grid-column: span 5; grid-row: span 2; }
-    .gallery-item:nth-child(12) { grid-column: span 4; grid-row: span 2; }
+    /* Landscape gallery */
+    .gallery-grid--landscape .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 3; }
+    .gallery-grid--landscape .gallery-item:nth-child(2) { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 3; }
+    .gallery-grid--landscape .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(8) { grid-column: span 5; grid-row: span 2; }
+    .gallery-grid--landscape .gallery-item:nth-child(9) { grid-column: span 4; grid-row: span 2; }
+
+    /* Interior gallery */
+    .gallery-grid--interior .gallery-item:nth-child(1)  { grid-column: span 5; grid-row: span 3; }
+    .gallery-grid--interior .gallery-item:nth-child(2)  { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(3)  { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(4)  { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(5)  { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(6)  { grid-column: span 5; grid-row: span 3; }
+    .gallery-grid--interior .gallery-item:nth-child(7)  { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(8)  { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(9)  { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(11) { grid-column: span 5; grid-row: span 3; }
+    .gallery-grid--interior .gallery-item:nth-child(12) { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(13) { grid-column: span 3; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(14) { grid-column: span 4; grid-row: span 2; }
+    .gallery-grid--interior .gallery-item:nth-child(15) { grid-column: span 3; grid-row: span 2; }
+
+    /* Sub-section divider inside #works */
+    .works-sub { margin-bottom: 6rem; }
+    .works-sub:last-child { margin-bottom: 0; }
+    .works-sub-header {
+      max-width: 1200px; margin: 0 auto 3rem;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
+    }
+    .works-sub-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; color: var(--text);
+    }
 
     .gallery-item img {
       width: 100%;
@@ -1501,18 +1528,30 @@
       .process-steps { grid-template-columns: repeat(2, 1fr); }
       .process-steps::before { display: none; }
       .gallery-grid { grid-template-columns: repeat(6, 1fr); }
-      .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 2; }
-      .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(6) { grid-column: span 6; grid-row: span 2; }
-      .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(8) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(9) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(11) { grid-column: span 3; grid-row: span 2; }
-      .gallery-item:nth-child(12) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(6) { grid-column: span 6; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(8) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--landscape .gallery-item:nth-child(9) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(1)  { grid-column: span 6; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(2)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(3)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(4)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(5)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(6)  { grid-column: span 6; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(7)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(8)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(9)  { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(11) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(12) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(13) { grid-column: span 6; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(14) { grid-column: span 3; grid-row: span 2; }
+      .gallery-grid--interior .gallery-item:nth-child(15) { grid-column: span 3; grid-row: span 2; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
     }
 
@@ -1755,54 +1794,123 @@
       <a href="#contact" class="btn-accent reveal" data-en="Start Your Project" data-es="Iniciá Tu Proyecto">Start Your Project</a>
     </div>
 
-    <div class="gallery-grid" id="gallery">
-      <div class="gallery-item reveal">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-1-de-tamano-grande.jpeg" alt="Project 1" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+    <!-- Landscaping sub-section -->
+    <div class="works-sub">
+      <div class="works-sub-header reveal">
+        <div>
+          <span class="label" data-en="Landscape Architecture" data-es="Arquitectura Paisajista">Landscape Architecture</span>
+          <h3 data-en="Garden &amp; Outdoor Projects" data-es="Proyectos de Jardín y Exteriores">Garden &amp; Outdoor Projects</h3>
+        </div>
       </div>
-      <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-2-de-tamano-grande.jpeg" alt="Project 2" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      <div class="gallery-grid gallery-grid--landscape" id="gallery-landscape">
+        <div class="gallery-item reveal">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-1-de-tamano-grande.jpeg" alt="Garden Project 1" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-2-de-tamano-grande.jpeg" alt="Garden Project 2" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-3-de-tamano-grande.jpeg" alt="Garden Project 3" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-4-de-tamano-grande.jpeg" alt="Garden Project 4" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-6-de-tamano-grande.jpeg" alt="Garden Project 5" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-3">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-7-de-tamano-grande.jpeg" alt="Garden Project 6" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-8-de-tamano-grande.jpeg" alt="Garden Project 7" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-9-de-tamano-grande.jpeg" alt="Garden Project 8" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-12-de-tamano-grande.jpeg" alt="Garden Project 9" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+        </div>
       </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-3-de-tamano-grande.jpeg" alt="Project 3" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+    </div>
+
+    <!-- Design & Renovations sub-section -->
+    <div class="works-sub">
+      <div class="works-sub-header reveal">
+        <div>
+          <span class="label" data-en="Design &amp; Renovations" data-es="Diseño y Reformas">Design &amp; Renovations</span>
+          <h3 data-en="Interior Projects" data-es="Proyectos de Interior">Interior Projects</h3>
+        </div>
       </div>
-      <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-4-de-tamano-grande.jpeg" alt="Project 4" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-6-de-tamano-grande.jpeg" alt="Project 5" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-3">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-7-de-tamano-grande.jpeg" alt="Project 6" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-8-de-tamano-grande.jpeg" alt="Project 7" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-9-de-tamano-grande.jpeg" alt="Project 8" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-12-de-tamano-grande.jpeg" alt="Project 9" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-3">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design17.jpg" alt="Project 10" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design3.jpg" alt="Project 11" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Interior" data-es="Interior">Interior</span></div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design8.jpg" alt="Project 12" loading="lazy" />
-        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      <div class="gallery-grid gallery-grid--interior" id="gallery-interior">
+        <div class="gallery-item reveal">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-1.jpg" alt="Interior Project 1" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-2.jpg" alt="Interior Project 2" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Living Space" data-es="Espacio Vital">Living Space</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-3.jpg" alt="Interior Project 3" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-4.jpg" alt="Interior Project 4" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Living Space" data-es="Espacio Vital">Living Space</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-5.jpg" alt="Interior Project 5" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Renovation" data-es="Reforma">Renovation</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-3">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-6.jpg" alt="Interior Project 6" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-7.jpg" alt="Interior Project 7" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Living Space" data-es="Espacio Vital">Living Space</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-8.jpg" alt="Interior Project 8" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Renovation" data-es="Reforma">Renovation</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-9.jpg" alt="Interior Project 9" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-3">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-10.jpg" alt="Interior Project 10" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Living Space" data-es="Espacio Vital">Living Space</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-11.jpg" alt="Interior Project 11" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-12.jpg" alt="Interior Project 12" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Renovation" data-es="Reforma">Renovation</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-13.jpg" alt="Interior Project 13" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Living Space" data-es="Espacio Vital">Living Space</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-14.jpg" alt="Interior Project 14" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Interior Design" data-es="Diseño Interior">Interior Design</span></div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/es/wp-content/uploads/2023/10/interiorismo-15.jpg" alt="Interior Project 15" loading="lazy" />
+          <div class="gallery-overlay"><span data-en="Renovation" data-es="Reforma">Renovation</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -2115,39 +2223,45 @@
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
     const lightboxCounter = document.getElementById('lightboxCounter');
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    let currentGalleryItems = [];
     let currentIndex = 0;
 
-    function openLightbox(index) {
+    function openLightbox(items, index) {
+      currentGalleryItems = items;
       currentIndex = index;
-      const img = galleryItems[index].querySelector('img');
+      const img = currentGalleryItems[index].querySelector('img');
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
-      lightboxCounter.textContent = `${index + 1} / ${galleryItems.length}`;
+      lightboxCounter.textContent = `${index + 1} / ${currentGalleryItems.length}`;
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
-    galleryItems.forEach((item, i) => {
-      item.addEventListener('click', () => openLightbox(i));
+    ['gallery-landscape', 'gallery-interior'].forEach(galleryId => {
+      const galleryEl = document.getElementById(galleryId);
+      if (!galleryEl) return;
+      const items = Array.from(galleryEl.querySelectorAll('.gallery-item'));
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => openLightbox(items, i));
+      });
     });
 
     lightboxPrev.addEventListener('click', (e) => {
       e.stopPropagation();
-      openLightbox((currentIndex - 1 + galleryItems.length) % galleryItems.length);
+      openLightbox(currentGalleryItems, (currentIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length);
     });
 
     lightboxNext.addEventListener('click', (e) => {
       e.stopPropagation();
-      openLightbox((currentIndex + 1) % galleryItems.length);
+      openLightbox(currentGalleryItems, (currentIndex + 1) % currentGalleryItems.length);
     });
 
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') openLightbox((currentIndex - 1 + galleryItems.length) % galleryItems.length);
-      if (e.key === 'ArrowRight') openLightbox((currentIndex + 1) % galleryItems.length);
+      if (e.key === 'ArrowLeft' && lightbox.classList.contains('open')) openLightbox(currentGalleryItems, (currentIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length);
+      if (e.key === 'ArrowRight' && lightbox.classList.contains('open')) openLightbox(currentGalleryItems, (currentIndex + 1) % currentGalleryItems.length);
     });
 
     function closeLightbox() {
