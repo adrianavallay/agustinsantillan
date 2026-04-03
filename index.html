@@ -2024,7 +2024,10 @@
         </div>
         <div class="form-group">
           <label data-en="Tell us about your project" data-es="Contanos sobre tu proyecto">Tell us about your project</label>
-          <textarea name="message" required placeholder="I'm looking to redesign my garden..."></textarea>
+          <textarea name="message" required
+            data-placeholder-en="I'm looking to redesign my garden / renovate my home interior..."
+            data-placeholder-es="Busco rediseñar mi jardín / renovar el interior de mi hogar..."
+            placeholder="I'm looking to redesign my garden / renovate my home interior..."></textarea>
         </div>
         <div class="form-consent">
           <input type="checkbox" id="privacy" name="privacy" required />
@@ -2166,6 +2169,11 @@
       // Update active button
       document.querySelectorAll('[data-lang-btn]').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+        el.placeholder = el.getAttribute(`data-placeholder-${lang}`) || el.getAttribute('data-placeholder-en');
       });
 
       // Update html lang attr
