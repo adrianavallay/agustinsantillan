@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santillán Design — Landscape Architecture & Interior Design</title>
+  <meta name="description" content="Agustín Santillán Irazuzta — Landscape Architect & Interior Designer based in Mallorca. Crafting unique outdoor and indoor spaces with a personal touch." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS VARIABLES & THEMES
+       ============================================= */
+    :root {
+      --accent: #7a9e7e;
+      --accent-light: #a8c5a0;
+      --accent-dark: #5a7d5e;
+
+      /* Light mode */
+      --bg: #f7f4ef;
+      --bg-alt: #eeeae3;
+      --bg-card: #ffffff;
+      --text: #2c2924;
+      --text-muted: #7a7267;
+      --text-light: #a09589;
+      --border: rgba(122, 158, 126, 0.2);
+      --nav-bg: rgba(247, 244, 239, 0.92);
+      --shadow: rgba(44, 41, 36, 0.08);
+      --shadow-lg: rgba(44, 41, 36, 0.15);
+      --overlay: rgba(20, 28, 20, 0.45);
+    }
+
+    [data-theme="dark"] {
+      --bg: #141a14;
+      --bg-alt: #1c241c;
+      --bg-card: #1f291f;
+      --text: #e8e2d8;
+      --text-muted: #9a9485;
+      --text-light: #6a6456;
+      --border: rgba(122, 158, 126, 0.15);
+      --nav-bg: rgba(20, 26, 20, 0.92);
+      --shadow: rgba(0, 0, 0, 0.25);
+      --shadow-lg: rgba(0, 0, 0, 0.4);
+      --overlay: rgba(10, 16, 10, 0.55);
+    }
+
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       TYPOGRAPHY
+       ============================================= */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .display-xl {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .display-lg {
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 400;
+    }
+
+    .display-md {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 400;
+    }
+
+    .label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .body-lg { font-size: 1.1rem; font-weight: 300; }
+    .body-md { font-size: 0.95rem; }
+
+    /* =============================================
+       NAVIGATION
+       ============================================= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 2.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: filter 0.4s ease;
+    }
+
+    nav.scrolled .nav-logo img {
+      filter: none;
+    }
+
+    [data-theme="dark"] nav.scrolled .nav-logo img {
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--accent-light); }
+
+    nav.scrolled .nav-links a {
+      color: var(--text-muted);
+    }
+
+    nav.scrolled .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 3px;
+      gap: 2px;
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    nav.scrolled .lang-toggle {
+      background: var(--bg-alt);
+      border-color: var(--border);
+    }
+
+    .lang-btn {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      transition: background 0.25s, color 0.25s;
+    }
+
+    nav.scrolled .lang-btn { color: var(--text-muted); }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Theme toggle */
+    .theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: rgba(255,255,255,0.8);
+    }
+
+    nav.scrolled .theme-btn {
+      border-color: var(--border);
+      background: var(--bg-alt);
+      color: var(--text-muted);
+    }
+
+    .theme-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: rotate(15deg);
+    }
+
+    .theme-btn svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled .hamburger span { background: var(--text); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--accent); }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://agustinsantillan.com/wp-content/uploads/2023/10/Karen-and-Robert.5.jpeg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.08);
+      transition: transform 0.1s linear;
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 15, 10, 0.75) 0%,
+        rgba(10, 15, 10, 0.3) 50%,
+        rgba(10, 15, 10, 0.15) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2.5rem 5rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-eyebrow span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    .hero-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent-light);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-indicator .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollLine 1.8s ease infinite;
+    }
+
+    /* =============================================
+       BUTTONS
+       ============================================= */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,158,126,0.35); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.7);
+      transform: translateY(-2px);
+    }
+
+    .btn-accent {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(122,158,126,0.25);
+    }
+
+    /* =============================================
+       INTRO BAND
+       ============================================= */
+    #intro {
+      background: var(--accent);
+      padding: 4rem 2.5rem;
+      text-align: center;
+    }
+
+    #intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       SECTIONS - SHARED
+       ============================================= */
+    .section {
+      padding: 7rem 2.5rem;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
+    .section-header .label {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* =============================================
+       ABOUT
+       ============================================= */
+    #about {
+      padding: 7rem 2.5rem;
+      background: var(--bg);
+    }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      border: 1px solid var(--accent);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .about-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(10%);
+      transition: filter 0.4s ease;
+    }
+
+    .about-img:hover { filter: grayscale(0%); }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      z-index: 2;
+      width: 110px;
+      height: 110px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .about-badge span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .about-badge small {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.2rem;
+    }
+
+    .about-content .label { margin-bottom: 0.75rem; }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .about-content h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .about-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .about-values {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .about-tag {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .about-tag:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* =============================================
+       HOW WE WORK
+       ============================================= */
+    #process {
+      background: var(--bg-alt);
+      padding: 7rem 2.5rem;
+    }
+
+    .process-header {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+    }
+
+    .process-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+    }
+
+    .process-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 580px;
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+
+    .process-steps {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: 2rem;
+      right: 2rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      opacity: 0.4;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .step:hover .step-number {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       GALLERY
+       ============================================= */
+    #works {
+      padding: 7rem 2.5rem;
+      background: var(--bg);
+    }
+
+    .works-header {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .works-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+    }
+
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 200px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 3; }
+    .gallery-item:nth-child(2) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 3; }
+    .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(8) { grid-column: span 5; grid-row: span 2; }
+    .gallery-item:nth-child(9) { grid-column: span 4; grid-row: span 2; }
+    .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
+    .gallery-item:nth-child(11) { grid-column: span 5; grid-row: span 2; }
+    .gallery-item:nth-child(12) { grid-column: span 4; grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,15,10,0.6) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
+      font-style: italic;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover { color: #fff; }
+
+    /* =============================================
+       SERVICES / HOW CAN I HELP
+       ============================================= */
+    #services {
+      background: var(--bg-alt);
+      padding: 7rem 2.5rem;
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .services-text h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      margin: 0.75rem 0 1.5rem;
+      line-height: 1.2;
+    }
+
+    .services-text h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .services-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .services-list {
+      list-style: none;
+      margin: 2rem 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .services-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    .services-list li::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      margin-top: 0.65em;
+      flex-shrink: 0;
+    }
+
+    .services-visual {
+      position: relative;
+    }
+
+    .services-visual img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .services-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 60%;
+      height: 60%;
+      border: 1px solid var(--accent);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    /* =============================================
+       CONTACT
+       ============================================= */
+    #contact {
+      padding: 7rem 2.5rem;
+      background: var(--bg);
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      margin: 0.75rem 0 1.5rem;
+      line-height: 1.2;
+    }
+
+    .contact-info h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-channel::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-channel:hover::before { transform: scaleY(1); }
+    .contact-channel:hover { background: var(--bg-card); transform: translateX(4px); }
+
+    .channel-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .channel-icon svg { width: 18px; height: 18px; }
+
+    .channel-info strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .channel-info span {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 0.85rem 1rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s ease;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-light);
+    }
+
+    .form-consent {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .form-consent input {
+      width: 16px;
+      height: 16px;
+      margin-top: 3px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .form-consent label {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .form-consent a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    footer {
+      background: #0e140e;
+      padding: 4rem 2.5rem 2.5rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand img {
+      height: 24px;
+      margin-bottom: 1.25rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-col ul a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--accent-light); }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .social-link svg { width: 15px; height: 15px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    /* =============================================
+       WHATSAPP FLOAT
+       ============================================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2.5s ease infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+      animation: none;
+    }
+
+    .whatsapp-float svg { width: 26px; height: 26px; fill: #fff; }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      51% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.55), 0 0 0 8px rgba(37,211,102,0.1); }
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 1024px) {
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .gallery-grid { grid-template-columns: repeat(6, 1fr); }
+      .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 2; }
+      .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(6) { grid-column: span 6; grid-row: span 2; }
+      .gallery-item:nth-child(7) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(8) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(9) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(10) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(11) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(12) { grid-column: span 3; grid-row: span 2; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .section { padding: 5rem 1.5rem; }
+      #about, #process, #works, #services, #contact { padding: 5rem 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-wrap { max-width: 380px; margin: 0 auto; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-visual { order: -1; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+      .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+
+      .works-header { flex-direction: column; align-items: flex-start; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .hero-content { padding: 0 1.5rem 4rem; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    }
+
+    /* =============================================
+       DARK MODE ADJUSTMENTS
+       ============================================= */
+    [data-theme="dark"] .about-img { filter: grayscale(20%) brightness(0.9); }
+    [data-theme="dark"] .about-img:hover { filter: grayscale(0%) brightness(1); }
+    [data-theme="dark"] footer { background: #080d08; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="https://agustinsantillan.com/wp-content/uploads/2021/10/Logo2-w.svg" alt="Santillán Design" />
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#hero" data-en="Home" data-es="Inicio">Home</a></li>
+      <li><a href="#about" data-en="About Me" data-es="Sobre Mí">About Me</a></li>
+      <li><a href="#process" data-en="How We Work" data-es="Cómo Trabajamos">How We Work</a></li>
+      <li><a href="#works" data-en="Works" data-es="Proyectos">Works</a></li>
+      <li><a href="#services" data-en="Interior Design" data-es="Diseño Interior">Interior Design</a></li>
+      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang-btn="en">EN</button>
+        <button class="lang-btn" data-lang-btn="es">ES</button>
+      </div>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <a href="#hero" data-en="Home" data-es="Inicio">Home</a>
+    <a href="#about" data-en="About Me" data-es="Sobre Mí">About Me</a>
+    <a href="#process" data-en="How We Work" data-es="Cómo Trabajamos">How We Work</a>
+    <a href="#works" data-en="Works" data-es="Proyectos">Works</a>
+    <a href="#services" data-en="Interior Design" data-es="Diseño Interior">Interior Design</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-line"></div>
+        <span data-en="Landscape Architecture &amp; Interior Design" data-es="Arquitectura del Paisaje &amp; Diseño Interior">Landscape Architecture &amp; Interior Design</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-en="Do you want to make <em>your dream garden</em> a reality?" data-es="¿Querés hacer realidad <em>el jardín de tus sueños</em>?">Do you want to make <em>your dream garden</em> a reality?</span>
+      </h1>
+      <p class="hero-sub" data-en="I help you design the garden of your dreams — in person or online, wherever you are." data-es="Te ayudo a diseñar el jardín de tus sueños — en persona o de forma remota, donde estés.">
+        I help you design the garden of your dreams — in person or online, wherever you are.
+      </p>
+      <div class="hero-ctas">
+        <a href="#process" class="btn-primary" data-en="Discover How We Work" data-es="Descubrí Cómo Trabajamos">Discover How We Work</a>
+        <a href="#contact" class="btn-outline" data-en="Request a Quote" data-es="Solicitá un Presupuesto">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span data-en="SCROLL" data-es="SCROLL">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ============ INTRO BAND ============ -->
+  <section id="intro">
+    <p class="reveal" data-en="We know the value of having a garden you can enjoy all year — a natural space that suits the environment, combining sensations and integrating all architectural elements into a unique whole." data-es="Sabemos el valor de tener un jardín que podés disfrutar todo el año — un espacio natural que se adapta al entorno, combinando sensaciones e integrando todos los elementos arquitectónicos en un conjunto único.">
+      We know the value of having a garden you can enjoy all year — a natural space that suits the environment, combining sensations and integrating all architectural elements into a unique whole.
+    </p>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <img class="about-img"
+          src="https://agustinsantillan.com/wp-content/uploads/2021/10/perfil-11-768x1024.jpg"
+          alt="Agustín Santillán Irazuzta" />
+        <div class="about-badge">
+          <span>&#43;5</span>
+          <small data-en="Years of Experience" data-es="Años de Experiencia">Years of Experience</small>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="label reveal" data-en="About Me" data-es="Sobre Mí">About Me</span>
+        <h2 class="reveal reveal-delay-1">
+          <span data-en="I am <em>Agustín</em><br>Santillán Irazuzta." data-es="Soy <em>Agustín</em><br>Santillán Irazuzta.">I am <em>Agustín</em><br>Santillán Irazuzta.</span>
+        </h2>
+        <p class="about-text reveal reveal-delay-2" data-en="Perseverance, curiosity and the instinct to undertake are in my blood as a hallmark. Throughout my life, I have worked on big projects — those that we see in magazines and that sometimes seem far from our reach." data-es="La perseverancia, la curiosidad y el instinto de emprender son parte de mi esencia. A lo largo de mi vida, he trabajado en grandes proyectos — los que vemos en revistas y que a veces parecen inalcanzables.">
+          Perseverance, curiosity and the instinct to undertake are in my blood as a hallmark. Throughout my life, I have worked on big projects — those that we see in magazines and that sometimes seem far from our reach.
+        </p>
+        <p class="about-text reveal reveal-delay-2" data-en="I trained in Argentina and then my professional adventure began, working in different places such as Spain and Brazil. At the beginning of 2021, I decided to settle in Mallorca to create my new home." data-es="Me formé en Argentina y luego comenzó mi aventura profesional, trabajando en lugares como España y Brasil. A principios de 2021, decidí establecerme en Mallorca para crear mi nuevo hogar.">
+          I trained in Argentina and then my professional adventure began, working in different places such as Spain and Brazil. At the beginning of 2021, I decided to settle in Mallorca to create my new home.
+        </p>
+        <p class="about-text reveal reveal-delay-3" data-en="As a Landscape Architect and Interior Designer, my mission is to create together the space you want and dream about. I invite you to design the garden of your dreams." data-es="Como Arquitecto Paisajista y Diseñador de Interiores, mi misión es crear juntos el espacio que querés y soñás. Te invito a diseñar el jardín de tus sueños.">
+          As a Landscape Architect and Interior Designer, my mission is to create together the space you want and dream about. I invite you to design the garden of your dreams.
+        </p>
+        <div class="about-values reveal reveal-delay-4">
+          <span class="about-tag" data-en="Landscape Architecture" data-es="Arquitectura del Paisaje">Landscape Architecture</span>
+          <span class="about-tag" data-en="Interior Design" data-es="Diseño Interior">Interior Design</span>
+          <span class="about-tag" data-en="Mallorca" data-es="Mallorca">Mallorca</span>
+          <span class="about-tag" data-en="3D Renderings" data-es="Renders 3D">3D Renderings</span>
+        </div>
+        <a href="#contact" class="btn-accent reveal reveal-delay-5" data-en="Let's Work Together" data-es="Trabajemos Juntos">Let's Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE WORK ============ -->
+  <section id="process">
+    <div class="process-header reveal">
+      <span class="label" data-en="Our Process" data-es="Nuestro Proceso">Our Process</span>
+      <h2 data-en="How We Work" data-es="Cómo Trabajamos">How We Work</h2>
+      <p data-en="Every project we do is personalized. We design according to your requirements, helping you choose fragrance, colors and more — combining sizes and shapes to create a unique atmosphere." data-es="Cada proyecto que hacemos es personalizado. Diseñamos según tus requisitos, ayudándote a elegir fragancias, colores y más — combinando tamaños y formas para crear una atmósfera única.">
+        Every project we do is personalized. We design according to your requirements, helping you choose fragrance, colors and more — combining sizes and shapes to create a unique atmosphere.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-number">01</div>
+        <h3 data-en="Initial Consultation" data-es="Consulta Inicial">Initial Consultation</h3>
+        <p data-en="We meet to get to know each other and understand your project. You tell us about the garden of your dreams and we listen carefully to every detail." data-es="Nos reunimos para conocernos y entender tu proyecto. Nos contás cómo es el jardín de tus sueños y escuchamos cada detalle.">
+          We meet to get to know each other and understand your project. You tell us about the garden of your dreams and we listen carefully to every detail.
+        </p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-number">02</div>
+        <h3 data-en="Site Visit or Remote" data-es="Visita al Lugar o Remoto">Site Visit or Remote</h3>
+        <p data-en="If you are in Mallorca, we organise a visit to the place. If you are elsewhere, you send us all the information we need to begin developing the preliminary project." data-es="Si estás en Mallorca, organizamos una visita al lugar. Si estás en otro sitio, nos enviás toda la información que necesitamos para comenzar a desarrollar el proyecto preliminar.">
+          If you are in Mallorca, we organise a visit to the place. If you are elsewhere, you send us all the information we need to begin developing the preliminary project.
+        </p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-number">03</div>
+        <h3 data-en="3D Design & Planning" data-es="Diseño 3D y Planificación">3D Design & Planning</h3>
+        <p data-en="The outcome is a project with stunning 3D renderings and technical plans where you can visualise the finished project in detail before execution begins." data-es="El resultado es un proyecto con impactantes renders 3D y planos técnicos donde podés visualizar el proyecto terminado en detalle antes de que comience la ejecución.">
+          The outcome is a project with stunning 3D renderings and technical plans where you can visualise the finished project in detail before execution begins.
+        </p>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-number">04</div>
+        <h3 data-en="Execution" data-es="Ejecución">Execution</h3>
+        <p data-en="Once you have approved the project, we begin to execute that dream you have always wanted. We oversee every step to ensure the result matches your vision." data-es="Una vez que aprobás el proyecto, comenzamos a ejecutar ese sueño que tanto querías. Supervisamos cada paso para asegurarnos de que el resultado coincida con tu visión.">
+          Once you have approved the project, we begin to execute that dream you have always wanted. We oversee every step to ensure the result matches your vision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS / GALLERY ============ -->
+  <section id="works">
+    <div class="works-header">
+      <div class="reveal">
+        <span class="label" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
+        <h2 data-en="Our Works" data-es="Nuestros Trabajos">Our Works</h2>
+      </div>
+      <a href="#contact" class="btn-accent reveal" data-en="Start Your Project" data-es="Iniciá Tu Proyecto">Start Your Project</a>
+    </div>
+
+    <div class="gallery-grid" id="gallery">
+      <div class="gallery-item reveal">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-1-de-tamano-grande.jpeg" alt="Project 1" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-2-de-tamano-grande.jpeg" alt="Project 2" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-3-de-tamano-grande.jpeg" alt="Project 3" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-4-de-tamano-grande.jpeg" alt="Project 4" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-6-de-tamano-grande.jpeg" alt="Project 5" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-7-de-tamano-grande.jpeg" alt="Project 6" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-8-de-tamano-grande.jpeg" alt="Project 7" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-9-de-tamano-grande.jpeg" alt="Project 8" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2023/10/Agustin-Santillan-12-de-tamano-grande.jpeg" alt="Project 9" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Outdoor Space" data-es="Espacio Exterior">Outdoor Space</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design2-17.jpg" alt="Project 10" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Garden Design" data-es="Diseño de Jardín">Garden Design</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design2-3.jpg" alt="Project 11" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Interior" data-es="Interior">Interior</span></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design2-8.jpg" alt="Project 12" loading="lazy" />
+        <div class="gallery-overlay"><span data-en="Landscape" data-es="Paisaje">Landscape</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTERIOR DESIGN / SERVICES ============ -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="services-grid">
+        <div class="services-text">
+          <span class="label reveal" data-en="Interior Design" data-es="Diseño Interior">Interior Design</span>
+          <h2 class="reveal reveal-delay-1">
+            <span data-en="We Design <em>All the Spaces</em> in Your Home." data-es="Diseñamos <em>Todos los Espacios</em> de Tu Hogar.">We Design <em>All the Spaces</em> in Your Home.</span>
+          </h2>
+          <p class="reveal reveal-delay-2" data-en="We help our clients design and decorate all the spaces in their home, regardless of budget. Your space deserves to be beautiful, functional, and uniquely yours." data-es="Ayudamos a nuestros clientes a diseñar y decorar todos los espacios de su hogar, independientemente del presupuesto. Tu espacio merece ser hermoso, funcional y únicamente tuyo.">
+            We help our clients design and decorate all the spaces in their home, regardless of budget. Your space deserves to be beautiful, functional, and uniquely yours.
+          </p>
+          <p class="reveal reveal-delay-2" data-en="You don't have to worry about where you are — our service is available in person and also online." data-es="No tenés que preocuparte por dónde estás — nuestro servicio está disponible de forma presencial y también online.">
+            You don't have to worry about where you are — our service is available in person and also online.
+          </p>
+          <ul class="services-list reveal reveal-delay-3">
+            <li data-en="Space planning and layout design" data-es="Planificación de espacios y diseño de distribución">Space planning and layout design</li>
+            <li data-en="Color palette and material selection" data-es="Selección de paleta de colores y materiales">Color palette and material selection</li>
+            <li data-en="Furniture and décor curation" data-es="Selección de muebles y decoración">Furniture and décor curation</li>
+            <li data-en="3D visualisation and mood boards" data-es="Visualización 3D y mood boards">3D visualisation and mood boards</li>
+            <li data-en="Project execution and follow-up" data-es="Ejecución del proyecto y seguimiento">Project execution and follow-up</li>
+          </ul>
+          <a href="#contact" class="btn-accent reveal reveal-delay-4" data-en="Contact With Us to Organise a Visit" data-es="Contactanos para Organizar una Visita">Contact With Us to Organise a Visit</a>
+        </div>
+
+        <div class="services-visual reveal reveal-delay-2">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2024/05/santillan-design2-17.jpg"
+               alt="Interior Design"
+               loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <span class="label reveal" data-en="Get In Touch" data-es="Ponete en Contacto">Get In Touch</span>
+        <h2 class="reveal reveal-delay-1">
+          <span data-en="Let's Build Your <em>Dream Space</em> Together." data-es="Construyamos Juntos Tu <em>Espacio Soñado</em>.">Let's Build Your <em>Dream Space</em> Together.</span>
+        </h2>
+        <p class="reveal reveal-delay-2" data-en="Leave your information and we will contact you. We'd love to hear about your project and help you take the first step." data-es="Dejá tu información y nos ponemos en contacto. Nos encantaría saber sobre tu proyecto y ayudarte a dar el primer paso.">
+          Leave your information and we will contact you. We'd love to hear about your project and help you take the first step.
+        </p>
+
+        <div class="contact-channels reveal reveal-delay-3">
+          <a href="mailto:hola@agustinsantillan.com" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="channel-info">
+              <strong data-en="Email" data-es="Email">Email</strong>
+              <span>hola@agustinsantillan.com</span>
+            </div>
+          </a>
+
+          <a href="https://wa.me/34647687206" target="_blank" rel="noopener" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div class="channel-info">
+              <strong>WhatsApp</strong>
+              <span>+34 647 687 206</span>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/santillan_design" target="_blank" rel="noopener" class="contact-channel">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div class="channel-info">
+              <strong>Instagram</strong>
+              <span>@santillan_design</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="contact-form reveal reveal-delay-2" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-en="First Name" data-es="Nombre">First Name</label>
+            <input type="text" name="firstname" required placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label data-en="Last Name" data-es="Apellido">Last Name</label>
+            <input type="text" name="lastname" placeholder="Doe" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
+          <input type="email" name="email" required placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label data-en="Phone (optional)" data-es="Teléfono (opcional)">Phone (optional)</label>
+          <input type="tel" name="phone" placeholder="+34 600 000 000" />
+        </div>
+        <div class="form-group">
+          <label data-en="Tell us about your project" data-es="Contanos sobre tu proyecto">Tell us about your project</label>
+          <textarea name="message" required placeholder="I'm looking to redesign my garden..."></textarea>
+        </div>
+        <div class="form-consent">
+          <input type="checkbox" id="privacy" name="privacy" required />
+          <label for="privacy" data-en="I have read and accept the <a href='#'>Privacy Policy</a>" data-es="He leído y acepto la <a href='#'>Política de Privacidad</a>">
+            I have read and accept the <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+        <button type="submit" class="btn-primary" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="https://agustinsantillan.com/wp-content/uploads/2021/10/Logo2-w.svg" alt="Santillán Design" />
+          <p data-en="We help our clients design and decorate all the spaces in their home, despite having a minimum budget. Based in Mallorca, available worldwide." data-es="Ayudamos a nuestros clientes a diseñar y decorar todos los espacios de su hogar, con cualquier presupuesto. Basados en Mallorca, disponibles en todo el mundo.">
+            We help our clients design and decorate all the spaces in their home, despite having a minimum budget. Based in Mallorca, available worldwide.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
+          <ul>
+            <li><a href="#hero" data-en="Home" data-es="Inicio">Home</a></li>
+            <li><a href="#about" data-en="About Me" data-es="Sobre Mí">About Me</a></li>
+            <li><a href="#process" data-en="How We Work" data-es="Cómo Trabajamos">How We Work</a></li>
+            <li><a href="#works" data-en="Works" data-es="Proyectos">Works</a></li>
+            <li><a href="#services" data-en="Interior Design" data-es="Diseño Interior">Interior Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Contact" data-es="Contacto">Contact</h4>
+          <ul>
+            <li><a href="mailto:hola@agustinsantillan.com">hola@agustinsantillan.com</a></li>
+            <li><a href="https://wa.me/34647687206">+34 647 687 206</a></li>
+            <li><a href="https://www.instagram.com/santillan_design" target="_blank">@santillan_design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Follow Us" data-es="Seguinos">Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/santillan_design" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/34647687206" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Agustín Santillán &mdash;
+          <a href="#" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
+          <a href="#" data-en="Cookies Policy" data-es="Política de Cookies">Cookies Policy</a>
+        </p>
+        <p data-en="Branding &amp; Design by <a href='https://dypconsultora.com' target='_blank'>DyP Consultora</a>" data-es="Branding &amp; Diseño por <a href='https://dypconsultora.com' target='_blank'>DyP Consultora</a>">
+          Branding &amp; Design by <a href="https://dypconsultora.com" target="_blank">DyP Consultora</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/34647687206" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ── Year ──────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Theme ─────────────────────────────────────────
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // ── Language ──────────────────────────────────────
+    const savedLang = localStorage.getItem('lang') || 'en';
+    let currentLang = savedLang;
+    html.setAttribute('data-lang', savedLang);
+
+    function applyLang(lang) {
+      currentLang = lang;
+      html.setAttribute('data-lang', lang);
+      localStorage.setItem('lang', lang);
+
+      // Update all elements with data-en / data-es
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerHTML = text;
+      });
+
+      // Update active button
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+      });
+
+      // Update html lang attr
+      html.lang = lang === 'es' ? 'es' : 'en';
+    }
+
+    applyLang(savedLang);
+
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang-btn')));
+    });
+
+    // ── Navbar scroll ─────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Parallax hero ─────────────────────────────────
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroBg.style.transform = `scale(1.08) translateY(${scrolled * 0.25}px)`;
+      }
+    }, { passive: true });
+
+    // ── Mobile menu ───────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ── Scroll reveal ─────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Gallery lightbox ──────────────────────────────
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Contact form ──────────────────────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('[type="submit"]');
+      const original = btn.innerHTML;
+      btn.innerHTML = currentLang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+      btn.style.background = '#5a7d5e';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+
+    // ── Image error fallback ──────────────────────────
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', () => {
+        const parent = img.closest('.gallery-item');
+        if (parent) {
+          parent.style.background = 'var(--bg-alt)';
+          parent.style.display = 'flex';
+          parent.style.alignItems = 'center';
+          parent.style.justifyContent = 'center';
+          img.style.opacity = '0';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
