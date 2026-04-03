@@ -840,6 +840,57 @@
     }
 
     /* =============================================
+       HOW CAN I HELP YOU
+       ============================================= */
+    #help {
+      background: #2c3e50;
+      padding: 6rem 2.5rem;
+      text-align: center;
+    }
+
+    .help-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    #help h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    #help p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .btn-help {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-help:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
        GALLERY
        ============================================= */
     #works {
@@ -1625,6 +1676,16 @@
           Once you have approved the project, we begin to execute that dream you have always wanted. We oversee every step to ensure the result matches your vision.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW CAN I HELP YOU ============ -->
+  <section id="help">
+    <div class="help-inner reveal">
+      <h2 data-en="How can I help you?" data-es="¿Cómo puedo ayudarte?">How can I help you?</h2>
+      <p data-en="We can meet you so you can tell us about the project." data-es="Podemos reunirnos para que nos cuentes sobre el proyecto.">We can meet you so you can tell us about the project.</p>
+      <p data-en="If you are in Mallorca, we will organize a visit to the place and take your ideas to make real your dream. Or maybe, if you are in another place, you will send us all the information we request in order to begin developing the preliminary project." data-es="Si estás en Mallorca, organizaremos una visita al lugar y tomaremos tus ideas para hacer realidad tu sueño. O tal vez, si estás en otro lugar, nos enviarás toda la información que solicitamos para comenzar a desarrollar el proyecto preliminar.">If you are in Mallorca, we will organize a visit to the place and take your ideas to make real your dream. Or maybe, if you are in another place, you will send us all the information we request in order to begin developing the preliminary project.</p>
+      <a href="#contact" class="btn-help" data-en="CONTACT WITH US TO ORGANICE A VISIT!" data-es="¡CONTÁCTANOS PARA ORGANIZAR UNA VISITA!">CONTACT WITH US TO ORGANICE A VISIT!</a>
     </div>
   </section>
 
