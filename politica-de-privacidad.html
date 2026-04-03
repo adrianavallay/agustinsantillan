@@ -350,7 +350,7 @@
     document.querySelectorAll('[data-theme-btn]').forEach(b => b.addEventListener('click', () => applyTheme(b.getAttribute('data-theme-btn'))));
 
     // Language
-    const savedLang = localStorage.getItem('lang') || 'en';
+    const savedLang = localStorage.getItem('lang') || (navigator.language && navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en');
     function applyLang(lang) {
       localStorage.setItem('lang', lang);
       html.lang = lang;

@@ -2025,7 +2025,7 @@
     });
 
     // ── Language ──────────────────────────────────────
-    const savedLang = localStorage.getItem('lang') || 'en';
+    const savedLang = localStorage.getItem('lang') || (navigator.language && navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en');
     let currentLang = savedLang;
     html.setAttribute('data-lang', savedLang);
 
