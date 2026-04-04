@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mejoras — Santillán Design</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      color: #2c2924;
+    }
+
+    header h1 strong { color: #7a9e7e; font-weight: 600; }
+
+    .progress-bar-wrap {
+      margin: 1.5rem auto 0;
+      max-width: 400px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #7a9e7e;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #888;
+      margin-top: 0.4rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      cursor: default;
+    }
+
+    .section-title.critical { background: #c0392b; color: #fff; }
+    .section-title.seo { background: #7a9e7e; color: #fff; }
+    .section-title.ux { background: #2c3e50; color: #fff; }
+    .section-title.a11y { background: #8e44ad; color: #fff; }
+    .section-title.code { background: #34495e; color: #fff; }
+
+    .section-title h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .section-count {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.25);
+      padding: 2px 10px;
+      border-radius: 100px;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .item:hover {
+      border-color: #7a9e7e;
+      box-shadow: 0 2px 8px rgba(122,158,126,0.12);
+    }
+
+    .item.done {
+      background: #f9fdf9;
+      border-color: #c8e6c9;
+      opacity: 0.65;
+    }
+
+    .item.done .item-title,
+    .item.done .item-desc {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .checkbox {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .item.done .checkbox {
+      background: #7a9e7e;
+      border-color: #7a9e7e;
+    }
+
+    .checkbox svg {
+      width: 14px;
+      height: 14px;
+      stroke: #fff;
+      stroke-width: 3;
+      fill: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .item.done .checkbox svg { opacity: 1; }
+
+    .item-content { flex: 1; }
+
+    .item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .item-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2924;
+      transition: color 0.3s;
+    }
+
+    .badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .badge.alta { background: #fde8e8; color: #c0392b; }
+    .badge.media { background: #fef3cd; color: #856404; }
+    .badge.baja { background: #d4edda; color: #155724; }
+
+    .item-desc {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: 300;
+      line-height: 1.6;
+      transition: color 0.3s;
+    }
+
+    .item-file {
+      font-size: 0.78rem;
+      color: #7a9e7e;
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+
+    .reset-btn {
+      display: block;
+      margin: 2rem auto 0;
+      background: none;
+      border: 1px solid #ccc;
+      color: #999;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .reset-btn:hover {
+      border-color: #c0392b;
+      color: #c0392b;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Mejoras — <strong>Santillán Design</strong></h1>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0 / 0 completadas</div>
+    </div>
+  </header>
+
+  <!-- SEGURIDAD -->
+  <div class="section" data-section="seguridad">
+    <div class="section-title critical">
+      <h2>Seguridad</h2>
+      <span class="section-count" data-count></span>
+    </div>
+    <div class="items">
+
+      <div class="item" data-id="sec-1">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Contraseña SMTP expuesta en código fuente</span>
+            <span class="badge alta">ALTA</span>
+          </div>
+          <p class="item-desc">La contraseña del correo está en texto plano en el archivo PHP, visible en el repositorio público de GitHub. Mover a un archivo <code>.env</code> fuera del control de versiones y leer con <code>getenv()</code>. Cambiar la contraseña actual ya que fue expuesta.</p>
+          <p class="item-file">send.php — línea 31</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="sec-2">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Verificación SSL deshabilitada en SMTP</span>
+            <span class="badge alta">ALTA</span>
+          </div>
+          <p class="item-desc"><code>verify_peer</code> y <code>verify_peer_name</code> están en <code>false</code>. Cambiar ambos a <code>true</code> y eliminar <code>allow_self_signed</code>.</p>
+          <p class="item-file">send.php — líneas 61-64</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEO Y RENDIMIENTO -->
+  <div class="section" data-section="seo">
+    <div class="section-title seo">
+      <h2>SEO y Rendimiento</h2>
+      <span class="section-count" data-count></span>
+    </div>
+    <div class="items">
+
+      <div class="item" data-id="seo-1">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Agregar favicon</span>
+            <span class="badge media">MEDIA</span>
+          </div>
+          <p class="item-desc">No hay favicon definido. Crear en formatos .ico, .svg y .png, y añadir las etiquetas <code>&lt;link rel="icon"&gt;</code> en el <code>&lt;head&gt;</code>.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="seo-2">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Agregar meta tags Open Graph y Twitter Cards</span>
+            <span class="badge media">MEDIA</span>
+          </div>
+          <p class="item-desc">Sin estas etiquetas, al compartir la URL en redes sociales no se muestra una preview con imagen y descripción. Agregar: og:title, og:description, og:image, og:url, twitter:card, etc.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="seo-3">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Alojar imágenes localmente (no depender del WP externo)</span>
+            <span class="badge media">MEDIA</span>
+          </div>
+          <p class="item-desc">Todas las imágenes se cargan desde agustinsantillan.com/wp-content/. Si ese hosting cae, el sitio se queda sin imágenes. Optimizar en WebP y usar <code>srcset</code> para responsive.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="seo-4">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Crear robots.txt y sitemap.xml</span>
+            <span class="badge baja">BAJA</span>
+          </div>
+          <p class="item-desc">Faltan estos archivos estándar para ayudar a los buscadores a indexar el sitio correctamente.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="seo-5">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Implementar analytics</span>
+            <span class="badge baja">BAJA</span>
+          </div>
+          <p class="item-desc">No hay sistema de analítica para medir visitas y comportamiento. Considerar Google Analytics o Plausible (más liviano y respetuoso con la privacidad).</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UX Y CONTENIDO -->
+  <div class="section" data-section="ux">
+    <div class="section-title ux">
+      <h2>UX y Contenido</h2>
+      <span class="section-count" data-count></span>
+    </div>
+    <div class="items">
+
+      <div class="item" data-id="ux-1">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Corregir errores gramaticales en textos en inglés</span>
+            <span class="badge alta">ALTA</span>
+          </div>
+          <p class="item-desc">
+            Correcciones principales:<br>
+            • "believing in a reality?" → "dreaming of a reality?"<br>
+            • "combine sensations" → "combines sensations"<br>
+            • "make it really" → "make it a reality"<br>
+            • "is create together" → "is to create together"<br>
+            • "according your requirement" → "according to your requirements"<br>
+            • "ORGANICE" → "ORGANIZE", "CONTACT WITH US" → "CONTACT US"<br>
+            • "the finish project" → "the finished project"<br>
+            • "what the garden...like" → "what the garden...looks like"
+          </p>
+        </div>
+      </div>
+
+      <div class="item" data-id="ux-2">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Diferenciar sección "How can I help you?" de "How We Work"</span>
+            <span class="badge baja">BAJA</span>
+          </div>
+          <p class="item-desc">Ambas secciones comparten texto casi idéntico. Reescribir una de ellas para que cada sección aporte valor distinto, o fusionarlas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACCESIBILIDAD -->
+  <div class="section" data-section="a11y">
+    <div class="section-title a11y">
+      <h2>Accesibilidad (a11y)</h2>
+      <span class="section-count" data-count></span>
+    </div>
+    <div class="items">
+
+      <div class="item" data-id="a11y-1">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Mejorar atributos alt en imágenes de galería</span>
+            <span class="badge media">MEDIA</span>
+          </div>
+          <p class="item-desc">Los alt son genéricos ("Garden Project 1", "Interior Project 2"). Describir brevemente lo que se ve en cada imagen para lectores de pantalla.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="a11y-2">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Lightbox: cierre con Escape y navegación con teclado</span>
+            <span class="badge media">MEDIA</span>
+          </div>
+          <p class="item-desc">Verificar que el lightbox se cierre con Escape, las flechas del teclado naveguen entre fotos, y el foco quede atrapado dentro mientras esté abierto.</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="a11y-3">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Agregar aria-labels a botones interactivos</span>
+            <span class="badge baja">BAJA</span>
+          </div>
+          <p class="item-desc">Los botones del lightbox (cerrar, anterior, siguiente) y otros elementos interactivos carecen de atributos <code>aria-label</code> descriptivos.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ARQUITECTURA -->
+  <div class="section" data-section="code">
+    <div class="section-title code">
+      <h2>Arquitectura del Código</h2>
+      <span class="section-count" data-count></span>
+    </div>
+    <div class="items">
+
+      <div class="item" data-id="code-1">
+        <div class="checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-title">Separar CSS y JS en archivos independientes</span>
+            <span class="badge baja">BAJA</span>
+          </div>
+          <p class="item-desc">Todo está inline en un HTML de ~2000 líneas. Separar en <code>styles.css</code> y <code>main.js</code> para mejor mantenimiento y caché del navegador. Hacer esto cuando el proyecto crezca.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="reset-btn" id="resetBtn">Reiniciar todo</button>
+
+  <p class="footer-note">Proyecto Santillán Design — Checklist de mejoras — Abril 2026</p>
+</div>
+
+<script>
+  const STORAGE_KEY = 'santillan-mejoras';
+
+  // Load saved state
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  const state = loadState();
+  const items = document.querySelectorAll('.item');
+  const total = items.length;
+
+  // Apply saved state
+  items.forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done');
+
+    item.addEventListener('click', () => {
+      item.classList.toggle('done');
+      state[id] = item.classList.contains('done');
+      saveState(state);
+      updateProgress();
+      updateSectionCounts();
+    });
+  });
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.item.done').length;
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = done + ' / ' + total + ' completadas (' + pct + '%)';
+  }
+
+  function updateSectionCounts() {
+    document.querySelectorAll('.section').forEach(sec => {
+      const all = sec.querySelectorAll('.item').length;
+      const done = sec.querySelectorAll('.item.done').length;
+      const badge = sec.querySelector('[data-count]');
+      if (badge) badge.textContent = done + '/' + all;
+    });
+  }
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('¿Reiniciar todas las mejoras a pendientes?')) return;
+    items.forEach(item => item.classList.remove('done'));
+    saveState({});
+    updateProgress();
+    updateSectionCounts();
+  });
+
+  // Init
+  updateProgress();
+  updateSectionCounts();
+</script>
+
+</body>
+</html>
