@@ -2377,7 +2377,11 @@
     let currentGalleryItems = [];
     let currentIndex = 0;
 
+    let lastFocusedElement = null;
+    const lightboxFocusable = [lightboxClose, lightboxPrev, lightboxNext];
+
     function openLightbox(items, index) {
+      if (!lightbox.classList.contains('open')) lastFocusedElement = document.activeElement;
       currentGalleryItems = items;
       currentIndex = index;
       const img = currentGalleryItems[index].querySelector('img');
@@ -2386,6 +2390,7 @@
       lightboxCounter.textContent = `${index + 1} / ${currentGalleryItems.length}`;
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
     }
 
     ['gallery-landscape', 'gallery-interior'].forEach(galleryId => {
@@ -2410,14 +2415,26 @@
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' && lightbox.classList.contains('open')) openLightbox(currentGalleryItems, (currentIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length);
-      if (e.key === 'ArrowRight' && lightbox.classList.contains('open')) openLightbox(currentGalleryItems, (currentIndex + 1) % currentGalleryItems.length);
+      if (e.key === 'ArrowLeft') openLightbox(currentGalleryItems, (currentIndex - 1 + currentGalleryItems.length) % currentGalleryItems.length);
+      if (e.key === 'ArrowRight') openLightbox(currentGalleryItems, (currentIndex + 1) % currentGalleryItems.length);
+      if (e.key === 'Tab') {
+        const idx = lightboxFocusable.indexOf(document.activeElement);
+        if (e.shiftKey) {
+          e.preventDefault();
+          lightboxFocusable[(idx <= 0 ? lightboxFocusable.length : idx) - 1].focus();
+        } else {
+          e.preventDefault();
+          lightboxFocusable[(idx + 1) % lightboxFocusable.length].focus();
+        }
+      }
     });
 
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
+      if (lastFocusedElement) lastFocusedElement.focus();
     }
 
     // ── Contact form ──────────────────────────────────
