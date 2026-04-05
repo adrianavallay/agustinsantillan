@@ -195,7 +195,7 @@ function handleSubmit(e) {
   btn.innerHTML = currentLang === 'es' ? 'Enviando...' : 'Sending...';
   btn.disabled = true;
 
-  fetch('send.php', { method: 'POST', body: new FormData(form) })
+  fetch('php/send.php', { method: 'POST', body: new FormData(form) })
     .then(r => r.json())
     .then(res => {
       if (res.ok) {
