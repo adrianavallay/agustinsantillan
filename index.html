@@ -1089,6 +1089,7 @@
     }
 
     .lightbox.open { display: flex; }
+    .lightbox { touch-action: none; }
 
     .lightbox img {
       max-width: 90vw;
@@ -1108,6 +1109,7 @@
       cursor: pointer;
       line-height: 1;
       transition: color 0.2s;
+      touch-action: manipulation;
     }
 
     .lightbox-close:hover { color: #fff; }
@@ -1128,6 +1130,7 @@
       cursor: pointer;
       transition: background 0.2s, color 0.2s, transform 0.2s;
       z-index: 1;
+      touch-action: manipulation;
     }
 
     .lightbox-arrow:hover {
